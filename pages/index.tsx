@@ -3,11 +3,11 @@ import NavBar from "../components/NavBar";
 function Home() {
   return (
     <div>
-      <NavBar />
+      {/* <NavBar /> */}
       <h1 className="active">Hello</h1>
-      {/* <style jsx>{`
+      {/* <style jsx global>{`
         a {
-          color: blue;
+          color: #333;
         }
       `}</style> */}
     </div>

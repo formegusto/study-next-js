@@ -47,13 +47,15 @@ function NavBar() {
       </Link>
       <style jsx>{`
         nav {
-          background: tomato;
+           {
+            /* background: tomato; */
+          }
         }
         a {
           text-decoration: none;
         }
         .active {
-          color: white;
+          color: tomato;
         }
       `}</style>
     </nav>

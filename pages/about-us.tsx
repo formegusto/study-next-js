@@ -3,7 +3,7 @@ import NavBar from "../components/NavBar";
 function Potato() {
   return (
     <div>
-      <NavBar />
+      {/* <NavBar /> */}
       <h1>Potato!</h1>
     </div>
   );
