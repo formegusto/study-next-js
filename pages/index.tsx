@@ -25,12 +25,12 @@ function Home({ results }: Props) {
     (id: string, title: string) => {
       push(
         {
-          pathname: `/movie/${id}`,
-          query: {
-            title,
-          },
+          pathname: `/movie/${title}/${id}`,
+          // query: {
+          //   title,
+          // },
         },
-        `/movie/${id}`
+        `/movie/${title}/${id}`
       );
     },
     [push]
@@ -50,12 +50,12 @@ function Home({ results }: Props) {
             <Link
               legacyBehavior
               href={{
-                pathname: `/movie/${movie.id}`,
-                query: {
-                  title: movie.original_title,
-                },
+                pathname: `/movie/${movie.original_title}/${movie.id}`,
+                // query: {
+                //   title: movie.original_title,
+                // },
               }}
-              as={`/movie/${movie.id}`}>
+              as={`/movie/${movie.original_title}/${movie.id}`}>
               <a>{movie.original_title}</a>
             </Link>
           </h4>
