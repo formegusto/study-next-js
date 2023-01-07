@@ -1,23 +1,27 @@
 import React from "react";
 import Seo from "../components/Seo";
 
-function Home() {
-  const [movies, setMovies] = React.useState<Movie[]>();
+type Props = {
+  results: Movie[];
+};
 
-  React.useEffect(() => {
-    (async () => {
-      const res = await fetch("/api/movies", {
-        method: "GET",
-      });
-      const { results } = await res.json();
-      setMovies(results);
-    })();
-  }, []);
+function Home({ results }: Props) {
+  const [movies, setMovies] = React.useState<Movie[]>(results);
+
+  // React.useEffect(() => {
+  //   (async () => {
+  //     const res = await fetch("/api/movies", {
+  //       method: "GET",
+  //     });
+  //     const { results } = await res.json();
+  //     setMovies(results);
+  //   })();
+  // }, []);
 
   return (
     <div>
       <Seo title="Home | Next Movies" />
-      {!movies && <h4>Loading...</h4>}
+      {/* {!movies && <h4>Loading...</h4>} */}
       {movies?.map((movie) => (
         <div key={movie.id}>
           <div className="movie" key={movie.id}>
@@ -49,6 +53,20 @@ function Home() {
       `}</style>
     </div>
   );
+}
+
+export async function getServerSideProps() {
+  // const API_KEY = process.env.API_KEY;
+  const res = await fetch("http://localhost:3000/api/movies", {
+    method: "GET",
+  });
+  const { results } = await res.json();
+
+  return {
+    props: {
+      results,
+    },
+  };
 }
 
 export default Home;
