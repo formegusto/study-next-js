@@ -1,19 +1,12 @@
 import { AppProps } from "next/app";
-import NavBar from "../components/NavBar";
+import Layout from "../components/Layout";
 import "../styles/globals.css";
 
 function FormeApp({ Component, pageProps }: AppProps) {
   return (
-    <div id="Forme-App">
-      <NavBar />
+    <Layout>
       <Component {...pageProps} />
-      <footer>&copy; forme next.js</footer>
-      <style jsx global>{`
-        a {
-          color: #333;
-        }
-      `}</style>
-    </div>
+    </Layout>
   );
 }
 

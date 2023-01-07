@@ -4,7 +4,6 @@ function FormeDocument() {
   return (
     <Html lang="ko">
       <Head title="Forme NextJs App" />
-      <title>Forme NextJS App</title>
       <body>
         <Main />
         <NextScript />

@@ -1,15 +1,10 @@
-import NavBar from "../components/NavBar";
+import Seo from "../components/Seo";
 
 function Home() {
   return (
     <div>
-      {/* <NavBar /> */}
+      <Seo title="Home | Next Movies" />
       <h1 className="active">Hello</h1>
-      {/* <style jsx global>{`
-        a {
-          color: #333;
-        }
-      `}</style> */}
     </div>
   );
 }
