@@ -39,12 +39,17 @@ function NavBar() {
 
   return (
     <nav>
-      <Link legacyBehavior href="/">
-        <a className={router.pathname === "/" ? "active" : ""}>Home</a>
-      </Link>
-      <Link legacyBehavior href="/about-us">
-        <a className={router.pathname === "/about-us" ? "active" : ""}>About</a>
-      </Link>
+      <img src="/vercel.svg" alt="logo" />
+      <div>
+        <Link legacyBehavior href="/">
+          <a className={router.pathname === "/" ? "active" : ""}>Home</a>
+        </Link>
+        <Link legacyBehavior href="/about-us">
+          <a className={router.pathname === "/about-us" ? "active" : ""}>
+            About
+          </a>
+        </Link>
+      </div>
       <style jsx>{`
         nav {
           display: flex;
