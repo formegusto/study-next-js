@@ -4,7 +4,12 @@ function Home() {
   return (
     <div>
       <NavBar />
-      <h1>Hello</h1>
+      <h1 className="active">Hello</h1>
+      {/* <style jsx>{`
+        a {
+          color: blue;
+        }
+      `}</style> */}
     </div>
   );
 }
