@@ -1,3 +1,5 @@
+import Link from "next/link";
+import { useRouter } from "next/router";
 import React from "react";
 import Seo from "../components/Seo";
 
@@ -6,6 +8,7 @@ type Props = {
 };
 
 function Home({ results }: Props) {
+  const { push } = useRouter();
   const [movies, setMovies] = React.useState<Movie[]>(results);
 
   // React.useEffect(() => {
@@ -18,16 +21,44 @@ function Home({ results }: Props) {
   //   })();
   // }, []);
 
+  const onClick = React.useCallback(
+    (id: string, title: string) => {
+      push(
+        {
+          pathname: `/movie/${id}`,
+          query: {
+            title,
+          },
+        },
+        `/movie/${id}`
+      );
+    },
+    [push]
+  );
+
   return (
     <div>
       <Seo title="Home | Next Movies" />
       {/* {!movies && <h4>Loading...</h4>} */}
       {movies?.map((movie) => (
-        <div key={movie.id}>
-          <div className="movie" key={movie.id}>
-            <img src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} />
-            <h4>{movie.original_title}</h4>
-          </div>
+        <div
+          onClick={() => onClick(movie.id, movie.original_title)}
+          className="movie"
+          key={movie.id}>
+          <img src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} />
+          <h4>
+            <Link
+              legacyBehavior
+              href={{
+                pathname: `/movie/${movie.id}`,
+                query: {
+                  title: movie.original_title,
+                },
+              }}
+              as={`/movie/${movie.id}`}>
+              <a>{movie.original_title}</a>
+            </Link>
+          </h4>
         </div>
       ))}
       <style jsx>{`
